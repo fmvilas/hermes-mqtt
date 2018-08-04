@@ -1,8 +1,7 @@
 const mqtt = require('mqtt');
-const HermesAdapter = require('hermesjs/lib/adapter');
-const HermesMessage = require('hermesjs/lib/message');
+const { Adapter, Message } = require('hermesjs');
 
-class MqttAdapter extends HermesAdapter {
+class MqttAdapter extends Adapter {
   async connect () {
     return this._connect();
   }
@@ -31,7 +30,8 @@ class MqttAdapter extends HermesAdapter {
         }
 
         this.client.on('message', (topic, message, packet) => {
-          this.emit('message', this._createMessage(packet));
+          const msg = this._createMessage(packet);
+          this.emit('message', msg);
         });
 
         resolve(this.client);
@@ -68,7 +68,7 @@ class MqttAdapter extends HermesAdapter {
       length: packet.length
     };
 
-    return new HermesMessage(this.hermes, packet.payload, headers, packet.topic);
+    return new Message(this.hermes, packet.payload, headers, packet.topic);
   }
 }
 

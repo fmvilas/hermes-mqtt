@@ -1,6 +1,6 @@
 # hermesjs-mqtt
 
-MQTT adapter for HermesJS.
+MQTT adapter for [HermesJS](https://github.com/fmvilas/hermes).
 
 ## Installing
 
