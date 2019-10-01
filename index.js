@@ -38,7 +38,7 @@ class MqttAdapter extends Adapter {
           this.emit('message', msg);
         });
 
-        resolve(this.client);
+        resolve(this);
       });
 
       this.client.on('error', (error) => {
