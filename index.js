@@ -2,6 +2,10 @@ const mqtt = require('mqtt');
 const { Adapter, Message } = require('hermesjs');
 
 class MqttAdapter extends Adapter {
+  name () {
+    return 'MQTT adapter'
+  }
+
   async connect () {
     return this._connect();
   }
