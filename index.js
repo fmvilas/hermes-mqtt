@@ -16,7 +16,9 @@ class MqttAdapter extends Adapter {
 
   _connect () {
     return new Promise((resolve) => {
-      this.client = mqtt.connect(this.options.url || 'mqtt://localhost');
+      var host = this.options.url || 'mqtt://localhost';
+      var config = this.options.config;
+      this.client = mqtt.connect(host, config);
 
       this.client.on('connect', () => {
         this.emit('connect', { name: 'MQTT adapter', adapter: this });
