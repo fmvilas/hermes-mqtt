@@ -19,6 +19,11 @@ const app = new Hermes();
 app.addAdapter(MqttAdapter, {
   url: 'mqtt://test.mosquitto.org',
   topics: ['hola/+', 'adios/+'],
+  config: {
+    username: "username",
+    password: "password",
+    other_mqtt_config: "other_mqtt_config"
+  }
 });
 ```
 
